@@ -1,6 +1,5 @@
-package example.model;
+package example.model.entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Message {

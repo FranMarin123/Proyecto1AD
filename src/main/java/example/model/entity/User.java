@@ -1,4 +1,4 @@
-package example.model;
+package example.model.entity;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
