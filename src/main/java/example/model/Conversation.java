@@ -1,36 +1,37 @@
 package example.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Conversation {
-    private LocalDate init;
-    private LocalDate end;
+    private LocalDateTime init;
+    private LocalDateTime end;
     private List<User> participants;
     private List<Message> messages;
 
-    public Conversation(LocalDate init, LocalDate end) {
+    public Conversation(LocalDateTime init, LocalDateTime end) {
         this.init = init;
         this.end = end;
         participants = new ArrayList<>();
         messages = new ArrayList<>();
     }
 
-    public LocalDate getInit() {
+    public LocalDateTime getInit() {
         return init;
     }
 
-    public void setInit(LocalDate init) {
+    public void setInit(LocalDateTime init) {
         this.init = init;
     }
 
-    public LocalDate getEnd() {
+    public LocalDateTime getEnd() {
         return end;
     }
 
-    public void setEnd(LocalDate end) {
+    public void setEnd(LocalDateTime end) {
         this.end = end;
     }
 
