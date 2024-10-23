@@ -1,0 +1,30 @@
+.primary-button {
+    -fx-background-color: #2d87f0;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+}
+
+.secondary-button {
+    -fx-background-color: #777;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1e63c9;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #555;
+}
+
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 5px 10px;
+}
