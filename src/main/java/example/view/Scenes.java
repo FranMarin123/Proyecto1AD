@@ -2,7 +2,7 @@ package example.view;
 
 public enum Scenes {
     ROOT("root.fxml"),
-    MAINMENU("primary.fxml");
+    MAINMENU("mainMenu.fxml");
 
     private String path;
 
