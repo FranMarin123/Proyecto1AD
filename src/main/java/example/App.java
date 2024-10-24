@@ -24,7 +24,7 @@ public class App extends Application {
         scene = new Scene(view.scene, 640, 480);
         currentController=(AppController) view.controller;
         currentController.onOpen(null);
-        stage.setTitle("EducSoftware 1.0");
+        stage.setTitle("Whatsapp 2");
         stage.getIcons().add(new Image(App.class.getResourceAsStream("img/logoWhatsApp2.jpeg")));
         stage.setScene(scene);
         stage.setMinHeight(520);
