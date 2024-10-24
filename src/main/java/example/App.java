@@ -25,7 +25,7 @@ public class App extends Application {
         currentController=(AppController) view.controller;
         currentController.onOpen(null);
         stage.setTitle("Whatsapp 2");
-        stage.getIcons().add(new Image(App.class.getResourceAsStream("img/logoWhatsApp2.jpeg")));
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("img/logoWhatsApp2.PNG")));
         stage.setScene(scene);
         stage.setMinHeight(520);
         stage.setMinWidth(680);
