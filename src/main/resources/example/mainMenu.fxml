@@ -14,14 +14,14 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/fondoPantalla_expanded.jpeg" />
+            <Image url="@img/fondo_resized.png" />
          </image>
       </ImageView>
       <VBox alignment="CENTER" layoutX="179.0" layoutY="58.0" prefHeight="387.0" prefWidth="541.0" spacing="20.0">
          <children>
             <ImageView fitHeight="287.0" fitWidth="456.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/logoWhatsApp2.jpeg" />
+                  <Image url="@img/logoWhatsApp2.PNG" />
                </image>
             </ImageView>
             <Label styleClass="label" text="La mejor experiencia  en un segundo formato más mejorado" textFill="WHITE">
