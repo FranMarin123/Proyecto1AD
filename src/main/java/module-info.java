@@ -5,4 +5,7 @@ module example {
 
     opens example to javafx.fxml;
     exports example;
+
+    opens example.model.entity to java.xml.bind;
+    exports example.model.entity;
 }

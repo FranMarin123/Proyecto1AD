@@ -1,7 +1,12 @@
 package example.model.entity;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
 
+@XmlRootElement(name="message")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Message {
     private String content;
     private LocalDateTime messageDate;
