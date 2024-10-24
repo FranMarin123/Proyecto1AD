@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.StartController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.PrimaryController">
     <center>
         <AnchorPane prefHeight="600.0" prefWidth="900.0" BorderPane.alignment="CENTER">
             <children>
@@ -19,7 +19,7 @@
                 <!-- Fondo del logo con una imagen o color personalizado -->
                 <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../img/fondoPantalla_expanded.jpeg" />
+                        <Image url="@img/fondoPantalla_expanded.jpeg" />
                     </image>
                 </ImageView>
 
@@ -28,7 +28,7 @@
                     <!-- Logo de la aplicación -->
                     <ImageView fitHeight="287.0" fitWidth="456.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                            <Image url="@../img/logoWhatsApp2.jpeg" />
+                            <Image url="@img/logoWhatsApp2.jpeg" />
                         </image>
                     </ImageView>
 
