@@ -20,7 +20,7 @@ public class XMLManager {
             m.marshal(c, new File(filename));
             result = true;
         } catch (JAXBException e) {
-            e.printStackTrace(); //Modo development
+            e.printStackTrace(); 
         }
         return result;
     }
