@@ -8,3 +8,9 @@
 .save-button:hover {
     -fx-background-color: #1e63c9;
 }
+
+.checkBox {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+}
