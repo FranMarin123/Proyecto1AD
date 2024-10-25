@@ -1,0 +1,38 @@
+.primary-button {
+    -fx-background-color: #2d87f0;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+}
+
+.secondary-button {
+    -fx-background-color: #777;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1e63c9;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #555;
+}
+
+.combo-box {
+    -fx-background-color: #2d87f0;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #2d87f0;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #1e63c9;
+}

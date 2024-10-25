@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.MainMenuController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/fondo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="287.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logoWhatsApp2.PNG" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER" layoutX="179.0" layoutY="58.0" prefHeight="496.0" prefWidth="542.0" spacing="20.0">
+         <children>
+            <ComboBox prefHeight="46.0" prefWidth="181.0" promptText="Conversación" styleClass="combo-box" />
+            <Button styleClass="primary-button" text="Crear Grupo" textAlignment="CENTER" />
+            <Button styleClass="primary-button" text="Ajustes" />
+            <Button styleClass="secondary-button" text="Cerrar" />
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../example/styles/homeStyle.css" />
+   </stylesheets>
+</AnchorPane>

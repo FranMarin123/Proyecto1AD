@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.MainMenuController">
+    <children>
+        <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/fondo.png" />
+            </image>
+        </ImageView>
+        <VBox alignment="CENTER" layoutY="20.0" prefHeight="466.0" prefWidth="900.0" spacing="20.0">
+            <children>
+                <ImageView fitHeight="287.0" fitWidth="456.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/logoWhatsApp2.PNG" />
+                    </image>
+                </ImageView>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="377.0">
+                    <children>
+                        <TextField maxWidth="200.0" prefWidth="200.0" text="Mail" />
+                        <TextField maxWidth="200.0" prefWidth="200.0" text="Contraseña" />
+                    </children>
+                </VBox>
+            <CheckBox mnemonicParsing="false" style="-fx-background-color: #2d87f0;" styleClass="checkBox" text="Mantener sesión iniciada" textFill="WHITE" />
+                <Button styleClass="save-button" text="Iniciar Sesión" />
+            </children>
+            <AnchorPane.topAnchor>20.0</AnchorPane.topAnchor>
+            <AnchorPane.bottomAnchor>114.0</AnchorPane.bottomAnchor>
+            <AnchorPane.leftAnchor>0.0</AnchorPane.leftAnchor>
+            <AnchorPane.rightAnchor>0.0</AnchorPane.rightAnchor>
+        </VBox>
+    </children>
+    <stylesheets>
+        <URL value="@styles/signinLoginStyle.css" />
+    </stylesheets>
+</AnchorPane>
