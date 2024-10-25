@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.MainMenuController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.SignInController">
     <children>
         <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -21,12 +21,14 @@
                 </ImageView>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="377.0">
                     <children>
-                        <TextField maxWidth="200.0" prefWidth="200.0" text="Nombre" />
-                        <TextField maxWidth="200.0" prefWidth="200.0" text="Mail" />
-                        <TextField maxWidth="200.0" prefWidth="200.0" text="Contraseña" />
+                        <TextField fx:id="nameText" maxWidth="200.0" prefWidth="200.0" text="Nombre" />
+                        <TextField fx:id="mailText" maxWidth="200.0" prefWidth="200.0" text="Mail" />
+                        <TextField fx:id="passwordText" maxWidth="200.0" prefWidth="200.0" text="Contraseña" />
+                        <TextField fx:id="confirmPasswordText" maxWidth="200.0" prefWidth="200.0" text="Confirmar contraseña" />
                     </children>
                 </VBox>
-                <Button styleClass="save-button" text="Guardar" />
+                <Button onAction="#saveClick" styleClass="save-button" text="Guardar" />
+                <Button onAction="#comeBackClick" styleClass="secondary-button" text="Volver" />
             </children>
             <AnchorPane.topAnchor>20.0</AnchorPane.topAnchor>
             <AnchorPane.bottomAnchor>114.0</AnchorPane.bottomAnchor>

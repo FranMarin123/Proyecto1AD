@@ -1,0 +1,9 @@
+.secondary-button {
+    -fx-background-color: #777;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+}
+.secondary-button:hover {
+    -fx-background-color: #555;
+}
