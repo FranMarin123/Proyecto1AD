@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.HomeController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.GroupParticipantsController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,7 +22,7 @@
             <ComboBox prefHeight="46.0" prefWidth="181.0" promptText="Conversación" styleClass="combo-box" />
             <Button styleClass="primary-button" text="Crear Grupo" textAlignment="CENTER" />
             <Button styleClass="primary-button" text="Ajustes" />
-            <Button onAction="#exitClick" styleClass="secondary-button" text="Cerrar" />
+            <Button styleClass="secondary-button" text="Cerrar" />
          </children>
       </VBox>
    </children>

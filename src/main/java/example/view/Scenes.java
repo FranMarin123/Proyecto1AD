@@ -3,8 +3,10 @@ package example.view;
 public enum Scenes {
     ROOT("root.fxml"),
     MAINMENU("mainMenu.fxml"),
-    REGISTER("register.fxml"),
+    SIGNIN("signin.fxml"),
     LOGIN("login.fxml"),
+    HOME("home.fxml"),
+    GROUP_PARTICIPANTS("groupParticipants.fxml")
     ;
 
     private String path;
