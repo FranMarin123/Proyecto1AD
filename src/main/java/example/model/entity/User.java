@@ -67,7 +67,12 @@ public class User {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         User user = (User) object;
-        return Objects.equals(name, user.name);
+        return Objects.equals(mail, user.mail) && Objects.equals(password, user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mail, password);
     }
 
     @Override
