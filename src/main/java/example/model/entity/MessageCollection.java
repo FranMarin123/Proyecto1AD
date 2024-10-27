@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Objects;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "messages")
+@XmlRootElement(name = "messageCollection")
 public class MessageCollection {
 
     @XmlElement(name = "message", type = Message.class)
     private List<Message> messages;
 
     public MessageCollection() {
-        this(null);
+
     }
 
     public MessageCollection(List<Message> messages) {

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "users")
+@XmlRootElement(name = "userCollection")
 public class UserCollection {
 
     @XmlElement(name = "user", type = User.class)
@@ -19,7 +19,7 @@ public class UserCollection {
     }
 
     public UserCollection() {
-        this.users = null;
+
     }
 
     public List<User> getUsers() {

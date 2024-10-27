@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@XmlRootElement(name="conversation")
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name="conversation")
 public class Conversation implements Serializable {
     private String name;
     private LocalDateTime init;

@@ -7,8 +7,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
-@XmlRootElement(name="user")
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name="user")
 public class User {
     private String name;
     private String mail;

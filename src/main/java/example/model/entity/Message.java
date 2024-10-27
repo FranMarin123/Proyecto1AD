@@ -4,24 +4,24 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-@XmlRootElement(name="message")
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name="message")
 public class Message {
     private String content;
     private LocalDateTime messageDate;
     private User transmitter;
-    private Conversation conversation;
 
-    public Message(String content, User transmitter, Conversation conversation) {
+
+    public Message(String content, User transmitter) {
         this.content = content;
         this.messageDate = LocalDateTime.now();
         this.transmitter = transmitter;
-        this.conversation = conversation;
     }
 
     public Message() {
-        this("",null,null);
+        this("",null);
     }
 
     public String getContent() {
@@ -48,12 +48,12 @@ public class Message {
         this.transmitter = transmitter;
     }
 
-    public Conversation getConversation() {
-        return conversation;
+    @Override
+    public String toString() {
+        return "Message{" +
+                "content='" + content + '\'' +
+                ", messageDate=" + messageDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) +
+                ", transmitter=" + transmitter +
+                '}';
     }
-
-    public void setConversation(Conversation conversation) {
-        this.conversation = conversation;
-    }
-
 }
