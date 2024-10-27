@@ -6,10 +6,23 @@ import java.util.ResourceBundle;
 
 import example.App;
 import example.controller.Controller;
+import example.model.entity.User;
+import example.model.entity.UserCollection;
+import example.model.singleton.UserSigned;
+import example.utils.JavaFXUtils;
+import example.utils.XMLManager;
 import example.view.Scenes;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 
 public class LogInController extends Controller implements Initializable {
+
+    @FXML
+    public TextField mailText;
+
+    @FXML
+    public TextField passwordText;
 
     @Override
     public void onOpen(Object input) throws IOException {
@@ -28,5 +41,35 @@ public class LogInController extends Controller implements Initializable {
 
     public void comeBackClick() throws IOException {
         App.currentController.changeScene(Scenes.MAINMENU,null);
+    }
+
+    public static User browseUserInArray(UserCollection allUsers,User userToBrowse){
+        User userReturn=null;
+        for (int i=0;i<allUsers.getUsers().size();i++){
+            if (allUsers.getUsers().get(i).equals(userToBrowse)){
+                userReturn=allUsers.getUsers().get(i);
+            }
+        }
+        return userReturn;
+    }
+
+    @FXML
+    public boolean logIn() {
+        boolean result = false;
+        User userToLogin = new User("", mailText.getText(), passwordText.getText());
+        UserCollection allUsers= XMLManager.readXML(new UserCollection(),"usuarios.xml");
+        if (allUsers.getUsers().contains(userToLogin)){
+            userToLogin = browseUserInArray(allUsers, userToLogin);
+            UserSigned.getInstance(userToLogin);
+        } else {
+            JavaFXUtils.showErrorAlert("FAILED TO LOGIN", "There is any user with this mail or the mail or password is incorrect.");
+        }
+        return result;
+    }
+
+    public void onActionLogIn() throws IOException {
+        if (logIn()) {
+            App.currentController.changeScene(Scenes.MAINMENU, null);
+        }
     }
 }
