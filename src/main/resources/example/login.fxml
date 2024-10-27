@@ -21,11 +21,11 @@
                 </ImageView>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="377.0">
                     <children>
-                        <TextField maxWidth="200.0" prefWidth="200.0" text="Mail" />
-                        <TextField maxWidth="200.0" prefWidth="200.0" text="Contraseña" />
+                        <TextField fx:id="mailText" maxWidth="200.0" prefWidth="200.0" text="Mail" />
+                        <TextField fx:id="passwordText" maxWidth="200.0" prefWidth="200.0" text="Contraseña" />
                     </children>
                 </VBox>
-            <CheckBox mnemonicParsing="false" style="-fx-background-color: #2d87f0;" styleClass="checkBox" text="Mantener sesión iniciada" textFill="WHITE" />
+            <CheckBox fx:id="cookie" mnemonicParsing="false" style="-fx-background-color: #2d87f0;" styleClass="checkBox" text="Mantener sesión iniciada" textFill="WHITE" />
                 <Button onAction="#onActionLogIn" styleClass="save-button" text="Iniciar Sesión" />
                 <Button onAction="#comeBackClick" styleClass="secondary-button" text="Volver" />
             </children>

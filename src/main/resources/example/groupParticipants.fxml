@@ -19,9 +19,9 @@
                   <Image url="@img/logoWhatsApp2.PNG" />
                </image>
             </ImageView>
-            <ComboBox prefHeight="46.0" prefWidth="181.0" promptText="Conversación" styleClass="combo-box" />
-            <Button styleClass="primary-button" text="Crear Grupo" textAlignment="CENTER" />
-            <Button styleClass="primary-button" text="Ajustes" />
+            <ComboBox prefHeight="46.0" prefWidth="181.0" promptText="Participantes" styleClass="combo-box" />
+            <Button styleClass="primary-button" text="Eliminar Participante" textAlignment="CENTER" />
+            <Button styleClass="primary-button" text="Añadir Participante" />
             <Button styleClass="secondary-button" text="Cerrar" />
          </children>
       </VBox>
