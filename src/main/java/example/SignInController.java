@@ -47,7 +47,7 @@ public class SignInController extends Controller implements Initializable {
 
     public void saveClick() throws IOException {
         if (nameText != null && mailText != null && passwordText != null && confirmPasswordText != null) {
-            if (passwordText.equals(confirmPasswordText)) {
+            if (passwordText.getText().equals(confirmPasswordText.getText())) {
                 User userToRegister=new User(nameText.getText(), mailText.getText(), confirmPasswordText.getText());
                 if (!proveIfUserExists(userToRegister)){
                     UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
