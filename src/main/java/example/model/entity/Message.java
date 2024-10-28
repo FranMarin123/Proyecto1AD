@@ -3,12 +3,13 @@ package example.model.entity;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="message")
-public class Message {
+public class Message implements Serializable {
     private String content;
     private LocalDateTime messageDate;
     private User transmitter;

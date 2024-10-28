@@ -19,7 +19,7 @@
                   <Image url="@img/logoWhatsApp2.PNG" />
                </image>
             </ImageView>
-            <ComboBox prefHeight="46.0" prefWidth="181.0" promptText="Conversación" styleClass="combo-box" />
+            <ComboBox fx:id="users" prefHeight="46.0" prefWidth="181.0" promptText="Conversación" styleClass="combo-box" />
             <Button onAction="#selectUserToCreateConversation" styleClass="primary-button" text="Crear Conversación Con Usuario Seleccionado" textAlignment="CENTER" />
             <Button styleClass="primary-button" text="Crear Grupo" textAlignment="CENTER" />
             <Button styleClass="primary-button" text="Exportar Conversación" />

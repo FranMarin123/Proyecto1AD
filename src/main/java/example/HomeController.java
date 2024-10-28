@@ -7,6 +7,7 @@ import example.model.entity.UserCollection;
 import example.model.singleton.SelectedConversation;
 import example.model.singleton.UserSigned;
 import example.utils.JavaFXUtils;
+import example.utils.Serializator;
 import example.utils.XMLManager;
 import example.view.Scenes;
 import javafx.fxml.FXML;
@@ -27,8 +28,9 @@ public class HomeController extends Controller implements Initializable {
     @Override
     public void onOpen(Object input) throws IOException {
         UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
+        System.out.println(allUsers);
         for (int i = 0; i < allUsers.getUsers().size(); i++) {
-            if (allUsers.getUsers().get(i) != UserSigned.getInstance().getCurrentUser()) {
+            if (!allUsers.getUsers().get(i).getMail().equals(UserSigned.getInstance().getCurrentUser().getMail())) {
                 users.getItems().add(allUsers.getUsers().get(i).getMail());
             }
         }
@@ -46,38 +48,44 @@ public class HomeController extends Controller implements Initializable {
 
     public void selectUserToCreateConversation() throws IOException {
         if (users != null && users.getValue() != null) {
-            File conversationFileName1 = new File(UserSigned.getInstance().getCurrentUser().getName() + users.getValue() + ".xml");
-            File conversationFileName2 = new File(users.getValue() + UserSigned.getInstance().getCurrentUser().getName() + ".xml");
+            File conversationFileName1 = new File(UserSigned.getInstance().getCurrentUser().getMail() + users.getValue());
+            File conversationFileName2 = new File(users.getValue() + UserSigned.getInstance().getCurrentUser().getMail());
             if (conversationFileName1.exists()) {
-                SelectedConversation.getInstance(XMLManager.readXML(new Conversation(), conversationFileName1.toString()));
+                SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName1.toString()));
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             } else if (conversationFileName2.exists()) {
-                SelectedConversation.getInstance(XMLManager.readXML(new Conversation(), conversationFileName2.toString()));
+                SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName2.toString()));
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             } else {
-                Conversation conversationToSave=new Conversation(conversationFileName1.toString(), LocalDateTime.now());
+                Conversation conversationToSave = new Conversation(conversationFileName1.toString(), LocalDateTime.now());
                 conversationToSave.addUser(UserSigned.getInstance().getCurrentUser());
                 conversationToSave.addUser(browseUserInUsersArray(users.getValue()));
+                Serializator.serializeObject(conversationToSave,conversationFileName1.toString());
+                SelectedConversation.getInstance(conversationToSave);
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             }
-        }else {
-            JavaFXUtils.showErrorAlert("ERROR: USUARIO NO SELECCIONADO","Por favor, selecciona un usuario para poder " +
+        } else {
+            JavaFXUtils.showErrorAlert("ERROR: USUARIO NO SELECCIONADO", "Por favor, selecciona un usuario para poder " +
                     "acceder a su conversación");
         }
     }
 
-    public static User browseUserInUsersArray(String userToBrowse){
-        User userReturn=null;
-        UserCollection allUsers=XMLManager.readXML(new UserCollection(),"usuarios.xml");
-        for (int i=0;i<allUsers.getUsers().size();i++){
-            if (allUsers.getUsers().get(i).getMail().equals(userToBrowse)){
-                userReturn=allUsers.getUsers().get(i);
+    public static User browseUserInUsersArray(String userToBrowse) {
+        User userReturn = null;
+        UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
+        for (int i = 0; i < allUsers.getUsers().size(); i++) {
+            if (allUsers.getUsers().get(i).getMail().equals(userToBrowse)) {
+                userReturn = allUsers.getUsers().get(i);
             }
         }
         return userReturn;
     }
 
     public void exitClick() {
+        File cookie = new File("cookie");
+        if (cookie.exists()) {
+            cookie.delete();
+        }
         System.exit(0);
     }
 }
