@@ -82,11 +82,11 @@ public class ConversationController extends Controller implements Initializable 
             hbox.setPadding(new Insets(5));
 
             if (messagesToShow.get(i).getTransmitter().equals(UserSigned.getInstance().getCurrentUser())){
-                labelMessage.setStyle("-fx-background-color: #B39DDB; -fx-padding: 10; -fx-background-radius: 10; -fx-border-radius: 10;");
+                labelMessage.setStyle("-fx-text-fill: white; -fx-background-color: #2d87f0; -fx-padding: 10; -fx-background-radius: 10; -fx-border-radius: 10;");
                 hbox.setAlignment(Pos.BOTTOM_RIGHT);
                 hbox.getChildren().add(labelMessage);
             } else {
-                labelMessage.setStyle("-fx-background-color: #E0E0E0; -fx-padding: 10; -fx-background-radius: 10; -fx-border-radius: 10;");
+                labelMessage.setStyle("-fx-text-fill: white; -fx-background-color: #777; -fx-padding: 10; -fx-background-radius: 10; -fx-border-radius: 10;");
                 hbox.setAlignment(Pos.BOTTOM_LEFT);
                 hbox.getChildren().add(labelMessage);
             }
