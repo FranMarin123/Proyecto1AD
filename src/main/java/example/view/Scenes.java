@@ -6,7 +6,8 @@ public enum Scenes {
     SIGNIN("signin.fxml"),
     LOGIN("login.fxml"),
     HOME("home.fxml"),
-    GROUP_PARTICIPANTS("groupParticipants.fxml")
+    GROUP_PARTICIPANTS("groupParticipants.fxml"),
+    CONVERSATION("conversation.fxml")
     ;
 
     private String path;
