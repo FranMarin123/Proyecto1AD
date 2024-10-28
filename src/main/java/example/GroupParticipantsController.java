@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 public class GroupParticipantsController extends Controller implements Initializable {
     @Override
     public void onOpen(Object input) throws IOException {
-        
+
     }
 
     @Override

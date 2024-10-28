@@ -48,20 +48,20 @@ public class HomeController extends Controller implements Initializable {
 
     public void selectUserToCreateConversation() throws IOException {
         if (users != null && users.getValue() != null) {
-            File conversationFileName1 = new File(UserSigned.getInstance().getCurrentUser().getMail() + users.getValue());
-            File conversationFileName2 = new File(users.getValue() + UserSigned.getInstance().getCurrentUser().getMail());
+            File conversationFileName1 = new File(UserSigned.getInstance().getCurrentUser().getMail() + users.getValue()+".xml");
+            File conversationFileName2 = new File(users.getValue() + UserSigned.getInstance().getCurrentUser().getMail()+".xml");
             if (conversationFileName1.exists()) {
-                SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName1.toString()));
+                SelectedConversation.getInstance(XMLManager.readXML(new Conversation(),conversationFileName1.toString()),conversationFileName1.toString());
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             } else if (conversationFileName2.exists()) {
-                SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName2.toString()));
+                SelectedConversation.getInstance(XMLManager.readXML(new Conversation(),conversationFileName2.toString()),conversationFileName2.toString());
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             } else {
                 Conversation conversationToSave = new Conversation(conversationFileName1.toString());
                 conversationToSave.addUser(UserSigned.getInstance().getCurrentUser());
                 conversationToSave.addUser(browseUserInUsersArray(users.getValue()));
-                Serializator.serializeObject(conversationToSave,conversationFileName1.toString());
-                SelectedConversation.getInstance(conversationToSave);
+                XMLManager.writeXML(conversationToSave,conversationFileName1.toString());
+                SelectedConversation.getInstance(conversationToSave,conversationFileName1.toString());
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             }
         } else {
