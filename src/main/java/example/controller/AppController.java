@@ -1,4 +1,4 @@
-package example;
+package example.controller;
 
 import example.App;
 import example.controller.Controller;

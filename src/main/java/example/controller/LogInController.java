@@ -1,4 +1,4 @@
-package example;
+package example.controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -65,7 +65,7 @@ public class LogInController extends Controller implements Initializable {
     @FXML
     public boolean logIn() {
         boolean result = false;
-        if (mailText!=null && mailText.getText()!=null) {
+        if (mailText!=null && mailText.getText()!=null && JavaFXUtils.validateEmail(mailText.getText())) {
             if (passwordText!=null && passwordText.getText()!=null) {
                 User userToLogin = new User("", mailText.getText(), passwordText.getText());
                 UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
