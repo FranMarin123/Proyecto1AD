@@ -20,6 +20,7 @@
                </image>
             </ImageView>
             <ComboBox prefHeight="46.0" prefWidth="181.0" promptText="Conversación" styleClass="combo-box" />
+            <Button onAction="#selectUserToCreateConversation" styleClass="primary-button" text="Crear Conversación Con Usuario Seleccionado" textAlignment="CENTER" />
             <Button styleClass="primary-button" text="Crear Grupo" textAlignment="CENTER" />
             <Button styleClass="primary-button" text="Exportar Conversación" />
             <Button onAction="#exitClick" styleClass="secondary-button" text="Cerrar" />

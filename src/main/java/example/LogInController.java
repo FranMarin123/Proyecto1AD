@@ -31,8 +31,8 @@ public class LogInController extends Controller implements Initializable {
 
     @Override
     public void onOpen(Object input) throws IOException {
-        User userSigned= Serializator.deserializeObject("cookie");
-        if (userSigned != null){
+        User userSigned = Serializator.deserializeObject("cookie");
+        if (userSigned != null) {
             UserSigned.getInstance(userSigned);
             App.currentController.changeScene(Scenes.HOME, null);
         }
@@ -49,14 +49,14 @@ public class LogInController extends Controller implements Initializable {
     }
 
     public void comeBackClick() throws IOException {
-        App.currentController.changeScene(Scenes.MAINMENU,null);
+        App.currentController.changeScene(Scenes.MAINMENU, null);
     }
 
-    public static User browseUserInArray(UserCollection allUsers,User userToBrowse){
-        User userReturn=null;
-        for (int i=0;i<allUsers.getUsers().size();i++){
-            if (allUsers.getUsers().get(i).equals(userToBrowse)){
-                userReturn=allUsers.getUsers().get(i);
+    public static User browseUserInArray(UserCollection allUsers, User userToBrowse) {
+        User userReturn = null;
+        for (int i = 0; i < allUsers.getUsers().size(); i++) {
+            if (allUsers.getUsers().get(i).equals(userToBrowse)) {
+                userReturn = allUsers.getUsers().get(i);
             }
         }
         return userReturn;
@@ -66,12 +66,12 @@ public class LogInController extends Controller implements Initializable {
     public boolean logIn() {
         boolean result = false;
         User userToLogin = new User("", mailText.getText(), passwordText.getText());
-        UserCollection allUsers= XMLManager.readXML(new UserCollection(),"usuarios.xml");
-        if (allUsers.getUsers().contains(userToLogin)){
+        UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
+        if (allUsers.getUsers().contains(userToLogin)) {
             userToLogin = browseUserInArray(allUsers, userToLogin);
             UserSigned.getInstance(userToLogin);
 
-            if (cookie.isSelected()){
+            if (cookie.isSelected()) {
                 Serializator.serializeObject(userToLogin, "cookie");
             }
 
