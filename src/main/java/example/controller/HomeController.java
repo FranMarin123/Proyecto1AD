@@ -23,11 +23,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for the home screen, allowing user selection and conversation creation.
+ * Also provides options to create groups, export data, or exit the application.
+ */
 public class HomeController extends Controller implements Initializable {
 
     @FXML
     public ComboBox<String> users = new ComboBox<>();
 
+    /**
+     * Initializes the controller by populating the ComboBox with available users
+     * that the current user can select to start or open a conversation.
+     *
+     * @param input The input data for initializing the controller, unused in this implementation.
+     * @throws IOException If an error occurs while reading user data.
+     */
     @Override
     public void onOpen(Object input) throws IOException {
         UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
@@ -48,6 +59,12 @@ public class HomeController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Selects a user from the ComboBox to start or resume a conversation.
+     * If the conversation does not exist, it creates a new one and navigates to the conversation view.
+     *
+     * @throws IOException If an error occurs during file operations or while changing scenes.
+     */
     public void selectUserToCreateConversation() throws IOException {
         if (users != null && users.getValue() != null) {
             File conversationFileName1 = new File(UserSigned.getInstance().getCurrentUser().getMail() + users.getValue());
@@ -72,6 +89,12 @@ public class HomeController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Searches and returns a user based on the provided email from the user collection.
+     *
+     * @param userToBrowse The email of the user to search for.
+     * @return The User object if found, otherwise null.
+     */
     public static User browseUserInUsersArray(String userToBrowse) {
         User userReturn = null;
         UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
@@ -83,14 +106,27 @@ public class HomeController extends Controller implements Initializable {
         return userReturn;
     }
 
+    /**
+     * Navigates to the group creation view when the group creation button is clicked.
+     *
+     * @throws IOException If an error occurs while changing the scene.
+     */
     public void groupCreateClick() throws IOException {
         App.currentController.changeScene(Scenes.CREATEGROUP, null);
     }
 
+    /**
+     * Navigates to the export view when the export button is clicked.
+     *
+     * @throws IOException If an error occurs while changing the scene.
+     */
     public void exportClick() throws IOException {
         App.currentController.changeScene(Scenes.EXPORT,null);
     }
 
+    /**
+     * Exits the application, deleting the login session file ("cookie") if it exists.
+     */
     public void exitClick() {
         File cookie = new File("cookie");
         if (cookie.exists()) {
