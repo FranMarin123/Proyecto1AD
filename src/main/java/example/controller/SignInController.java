@@ -16,6 +16,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
+/**
+ * Controller for the Sign-In screen, handling the registration process for new users.
+ */
 public class SignInController extends Controller implements Initializable {
 
     @FXML
@@ -45,6 +48,14 @@ public class SignInController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Handles the save button click event to register a new user.
+     * Validates input fields, checks for email format, and verifies that passwords match.
+     * If successful, registers the user and navigates to the home screen. Displays error alerts
+     * for invalid inputs or if the user already exists.
+     *
+     * @throws IOException If an error occurs while saving data or changing the scene.
+     */
     public void saveClick() throws IOException {
         if (nameText != null && mailText != null && passwordText != null && confirmPasswordText != null) {
             if (JavaFXUtils.validateEmail(mailText.getText())) {
@@ -71,6 +82,12 @@ public class SignInController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Checks if a user already exists in the user collection based on the provided user data.
+     *
+     * @param userToProve The user object to check for existence.
+     * @return true if the user already exists, false otherwise.
+     */
     public boolean proveIfUserExists(User userToProve) {
         boolean result = false;
         UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
@@ -80,6 +97,11 @@ public class SignInController extends Controller implements Initializable {
         return result;
     }
 
+    /**
+     * Handles the action for the back button, navigating back to the main menu.
+     *
+     * @throws IOException If an error occurs while changing the scene.
+     */
     public void comeBackClick() throws IOException {
         App.currentController.changeScene(Scenes.MAINMENU, null);
     }

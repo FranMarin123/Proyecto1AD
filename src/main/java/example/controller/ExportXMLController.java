@@ -21,6 +21,10 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for managing XML export functionality, allowing the user to export
+ * a selected conversation to an XML file.
+ */
 public class ExportXMLController extends Controller implements Initializable {
 
     @FXML
@@ -29,6 +33,13 @@ public class ExportXMLController extends Controller implements Initializable {
     @FXML
     public TextField filenameExport;
 
+    /**
+     * Initializes the controller on opening, populating the user selection ComboBox
+     * with users that have active conversations with the signed-in user.
+     *
+     * @param input The input data for initializing the controller, unused in this implementation.
+     * @throws IOException If an error occurs while reading the user data.
+     */
     @Override
     public void onOpen(Object input) throws IOException {
         UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
@@ -39,6 +50,11 @@ public class ExportXMLController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Called when the controller is closed, providing a point for cleanup if needed.
+     *
+     * @param output Output data for the controller, unused in this implementation.
+     */
     @Override
     public void onClose(Object output) {
 
@@ -49,6 +65,13 @@ public class ExportXMLController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Exports the conversation between the signed-in user and the selected user
+     * to an XML file. It validates if both the user and filename are provided.
+     * Displays error alerts if validation fails or the conversation file does not exist.
+     *
+     * @throws IOException If an error occurs during file operations.
+     */
     public void exportXML() throws IOException {
         if (selection != null && selection.getValue() != null) {
             if (filenameExport != null && filenameExport.getText() != null) {
@@ -74,6 +97,11 @@ public class ExportXMLController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Returns to the home screen when the exit button is clicked.
+     *
+     * @throws IOException If an error occurs while changing the scene to the home screen.
+     */
     public void exitButton() throws IOException {
         App.currentController.changeScene(Scenes.HOME,null);
     }

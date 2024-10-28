@@ -26,6 +26,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class to manage the conversation view, handling message display,
+ * message sending, and participant view interactions.
+ */
 public class ConversationController extends Controller implements Initializable {
 
     @FXML
@@ -37,12 +41,23 @@ public class ConversationController extends Controller implements Initializable 
     @FXML
     public VBox allMessages = new VBox();
 
+    /**
+     * Called when the controller is opened, setting up the username and displaying messages.
+     *
+     * @param input Input data for the controller, unused in this implementation.
+     * @throws IOException If an I/O error occurs during initialization.
+     */
     @Override
     public void onOpen(Object input) throws IOException {
         userName.setText(detectOtherUsername());
         showMessages();
     }
 
+    /**
+     * Detects and retrieves the username of the conversation participant other than the signed-in user.
+     *
+     * @return The username of the other conversation participant.
+     */
     public String detectOtherUsername() {
         String username = null;
         for (int i = 0; i < SelectedConversation.getInstance().getCurrentConversation().getParticipants().getUsers().size(); i++) {
@@ -54,6 +69,11 @@ public class ConversationController extends Controller implements Initializable 
         return username;
     }
 
+    /**
+     * Called when the controller is closed, providing a point for cleanup if needed.
+     *
+     * @param output Output data for the controller, unused in this implementation.
+     */
     @Override
     public void onClose(Object output) {
     }
@@ -63,6 +83,10 @@ public class ConversationController extends Controller implements Initializable 
 
     }
 
+    /**
+     * Sends the message entered in the `message` TextField. If a message is entered,
+     * it creates a `Message` object, adds it to the current conversation, and serializes the conversation state.
+     */
     public void sendMessage(){
         if (message != null && message.getText() != null){
             Message messageToSave = new Message(message.getText(), UserSigned.getInstance().getCurrentUser());
@@ -73,6 +97,10 @@ public class ConversationController extends Controller implements Initializable 
         showMessages();
     }
 
+    /**
+     * Displays all messages in the current conversation, formatting each message depending on the sender.
+     * Messages from the signed-in user are aligned to the right, while messages from others are aligned to the left.
+     */
     public void showMessages(){
         allMessages.getChildren().clear();
         List<Message> messagesToShow = SelectedConversation.getInstance().getCurrentConversation().getMessages().getMessages();
@@ -100,6 +128,12 @@ public class ConversationController extends Controller implements Initializable 
         }
     }
 
+    /**
+     * Formats a message for display, including the sender's name, content, and timestamp.
+     *
+     * @param messageToFormatter The message to format.
+     * @return A formatted string representing the message.
+     */
     public String messageFormatter(Message messageToFormatter){
         String messageToReturn = "";
         messageToReturn = messageToFormatter.getTransmitter().getName() + ": " + messageToFormatter.getContent() + "\n" +
@@ -107,10 +141,20 @@ public class ConversationController extends Controller implements Initializable 
         return messageToReturn;
     }
 
+    /**
+     * Handles the action of viewing the participants in the current conversation.
+     *
+     * @throws IOException If an error occurs while changing the scene to display participants.
+     */
     public void seeParticipantsClick() throws IOException {
         App.currentController.changeScene(Scenes.GROUP_PARTICIPANTS, null);
     }
 
+    /**
+     * Handles the action of returning to the home screen from the conversation view.
+     *
+     * @throws IOException If an error occurs while changing the scene to the home screen.
+     */
     public void comeBackClick() throws IOException {
         App.currentController.changeScene(Scenes.HOME, null);
     }

@@ -18,6 +18,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
+/**
+ * Controller for the Login screen, managing user authentication and optional session persistence.
+ */
 public class LogInController extends Controller implements Initializable {
 
     @FXML
@@ -29,6 +32,13 @@ public class LogInController extends Controller implements Initializable {
     @FXML
     public CheckBox cookie;
 
+    /**
+     * Initializes the login controller by checking for a saved session ("cookie").
+     * If a previous session exists, the user is redirected to the home screen.
+     *
+     * @param input Input data for initializing the controller, unused in this implementation.
+     * @throws IOException If an error occurs during deserialization of the saved session.
+     */
     @Override
     public void onOpen(Object input) throws IOException {
         User userSigned = Serializator.deserializeObject("cookie");
@@ -48,10 +58,22 @@ public class LogInController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Navigates back to the main menu screen.
+     *
+     * @throws IOException If an error occurs while changing the scene.
+     */
     public void comeBackClick() throws IOException {
         App.currentController.changeScene(Scenes.MAINMENU, null);
     }
 
+    /**
+     * Searches for a user in the provided user collection by matching with the given user data.
+     *
+     * @param allUsers    The collection of all users.
+     * @param userToBrowse The user data to search for.
+     * @return The matching User object if found, otherwise null.
+     */
     public static User browseUserInArray(UserCollection allUsers, User userToBrowse) {
         User userReturn = null;
         for (int i = 0; i < allUsers.getUsers().size(); i++) {
@@ -62,6 +84,12 @@ public class LogInController extends Controller implements Initializable {
         return userReturn;
     }
 
+    /**
+     * Attempts to log the user in by validating the email and password input.
+     * If successful, saves the user session if the "Remember Me" option is selected.
+     *
+     * @return true if login is successful, false otherwise.
+     */
     @FXML
     public boolean logIn() {
         boolean result = false;
@@ -90,6 +118,11 @@ public class LogInController extends Controller implements Initializable {
         return result;
     }
 
+    /**
+     * Handles the login action. If login is successful, redirects the user to the home screen.
+     *
+     * @throws IOException If an error occurs while changing the scene.
+     */
     public void onActionLogIn() throws IOException {
         if (logIn()) {
             App.currentController.changeScene(Scenes.HOME, null);
