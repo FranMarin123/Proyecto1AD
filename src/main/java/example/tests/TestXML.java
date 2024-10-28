@@ -16,7 +16,7 @@ public class TestXML {
         UserCollection userCollection=new UserCollection(usuarios);
         userCollection.addUser(new User("Juan","juan@gmail.com","1234"));
         userCollection.addUser(new User("Pedro","pedro@gmail.com","1234"));
-        Conversation prueba=new Conversation("ChatPrueba", LocalDateTime.now());
+        Conversation prueba=new Conversation("ChatPrueba");
         prueba.setParticipants(userCollection);
         prueba.addMessage(new Message("Prueba de mensaje",userCollection.getUsers().get(1)));
         XMLManager.writeXML(prueba, "pruebaConversacion.xml");

@@ -14,26 +14,21 @@ import java.util.Objects;
 @XmlRootElement(name="conversation")
 public class Conversation implements Serializable {
     private String name;
-    private LocalDateTime init;
-    private LocalDateTime end;
     private UserCollection participants;
     private MessageCollection messages;
 
-    public Conversation(String name, LocalDateTime init, LocalDateTime end, UserCollection participants, MessageCollection messages) {
+    public Conversation(String name, UserCollection participants, MessageCollection messages) {
         this.name = name;
-        this.init = init;
-        this.end = end;
         this.participants = participants;
         this.messages = messages;
     }
 
     public Conversation() {
-        this("",null,null,null,null);
+        this("", null,null);
     }
 
-    public Conversation(String name, LocalDateTime init) {
+    public Conversation(String name) {
         this.name=name;
-        this.init = init;
         participants = new UserCollection(new ArrayList<>());
         messages = new MessageCollection(new ArrayList<>());
     }
@@ -45,22 +40,6 @@ public class Conversation implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public LocalDateTime getInit() {
-        return init;
-    }
-
-    public void setInit(LocalDateTime init) {
-        this.init = init;
-    }
-
-    public LocalDateTime getEnd() {
-        return end;
-    }
-
-    public void setEnd(LocalDateTime end) {
-        this.end = end;
     }
 
     public UserCollection getParticipants() {
@@ -84,11 +63,12 @@ public class Conversation implements Serializable {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         Conversation that = (Conversation) object;
-        return Objects.equals(init, that.init) && Objects.equals(end, that.end) && Objects.equals(participants, that.participants) && Objects.equals(messages, that.messages);
+        return Objects.equals(name, that.name) && Objects.equals(participants, that.participants) && Objects.equals(messages, that.messages);
     }
 
-    public void close(){
-        setEnd(LocalDateTime.now());
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, participants, messages);
     }
 
     public boolean addUser(User userToAdd) {
@@ -111,8 +91,6 @@ public class Conversation implements Serializable {
     public String toString() {
         return "Conversation{" +
                 "name='" + name + '\'' +
-                ", init=" + init.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) +
-                ", end=" + end.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) +
                 ", participants=" + participants +
                 ", messages=" + messages +
                 '}';

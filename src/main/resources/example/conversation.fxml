@@ -4,7 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.ConversationController">
     <children>
@@ -27,13 +26,13 @@
                     </children>
                 </HBox>
             <Label fx:id="userName" />
-            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+            <ScrollPane fx:id="conversation" prefHeight="200.0" prefWidth="200.0">
                <content>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <VBox fx:id="allMessages" prefHeight="183.0" prefWidth="486.0" />
                </content>
             </ScrollPane>
-                <TextField fx:id="conversation" maxWidth="450.0" prefWidth="450.0" promptText="Escribir..." />
-            <Button mnemonicParsing="false" style="-fx-background-color: #2d87f0;" text="Enviar" textFill="WHITE" />
+                <TextField fx:id="message" maxWidth="450.0" prefWidth="450.0" promptText="Escribir..." />
+            <Button mnemonicParsing="false" onAction="#sendMessage" style="-fx-background-color: #2d87f0;" text="Enviar" textFill="WHITE" />
             </children>
             <AnchorPane.topAnchor>67.0</AnchorPane.topAnchor>
             <AnchorPane.bottomAnchor>67.0</AnchorPane.bottomAnchor>

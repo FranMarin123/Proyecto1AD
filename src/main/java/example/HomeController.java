@@ -57,7 +57,7 @@ public class HomeController extends Controller implements Initializable {
                 SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName2.toString()));
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             } else {
-                Conversation conversationToSave = new Conversation(conversationFileName1.toString(), LocalDateTime.now());
+                Conversation conversationToSave = new Conversation(conversationFileName1.toString());
                 conversationToSave.addUser(UserSigned.getInstance().getCurrentUser());
                 conversationToSave.addUser(browseUserInUsersArray(users.getValue()));
                 Serializator.serializeObject(conversationToSave,conversationFileName1.toString());
