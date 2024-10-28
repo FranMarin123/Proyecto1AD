@@ -81,6 +81,10 @@ public class HomeController extends Controller implements Initializable {
         return userReturn;
     }
 
+    public void groupCreateClick() throws IOException {
+        App.currentController.changeScene(Scenes.CREATEGROUP, null);
+    }
+
     public void exitClick() {
         File cookie = new File("cookie");
         if (cookie.exists()) {
