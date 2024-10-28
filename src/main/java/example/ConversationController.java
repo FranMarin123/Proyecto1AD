@@ -5,6 +5,7 @@ import example.model.entity.Message;
 import example.model.entity.MessageCollection;
 import example.model.singleton.SelectedConversation;
 import example.model.singleton.UserSigned;
+import example.utils.Serializator;
 import example.view.Scenes;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,7 +38,6 @@ public class ConversationController extends Controller implements Initializable 
     @Override
     public void onOpen(Object input) throws IOException {
         userName.setText(detectOtherUsername());
-        System.out.println(SelectedConversation.getInstance().getCurrentConversation());
         showMessages();
     }
 
@@ -65,6 +65,8 @@ public class ConversationController extends Controller implements Initializable 
         if (message != null && message.getText() != null){
             Message messageToSave = new Message(message.getText(), UserSigned.getInstance().getCurrentUser());
             SelectedConversation.getInstance().getCurrentConversation().addMessage(messageToSave);
+            Serializator.serializeObject(SelectedConversation.getInstance().getCurrentConversation(),
+                    SelectedConversation.getInstance().getCurrentFilename());
         }
         showMessages();
     }

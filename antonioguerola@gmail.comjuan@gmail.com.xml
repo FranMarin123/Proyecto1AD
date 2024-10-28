@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<conversation>
+    <name>antonioguerola@gmail.comjuan@gmail.com.xml</name>
+    <participants>
+        <user>
+            <name>Antonio Guerola Crespo</name>
+            <mail>antonioguerola@gmail.com</mail>
+            <password>03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4</password>
+        </user>
+        <user>
+            <name>Juan</name>
+            <mail>juan@gmail.com</mail>
+            <password>03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4</password>
+        </user>
+    </participants>
+    <messages/>
+</conversation>

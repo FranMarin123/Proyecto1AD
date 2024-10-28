@@ -28,7 +28,6 @@ public class HomeController extends Controller implements Initializable {
     @Override
     public void onOpen(Object input) throws IOException {
         UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
-        System.out.println(allUsers);
         for (int i = 0; i < allUsers.getUsers().size(); i++) {
             if (!allUsers.getUsers().get(i).getMail().equals(UserSigned.getInstance().getCurrentUser().getMail())) {
                 users.getItems().add(allUsers.getUsers().get(i).getMail());
@@ -51,17 +50,17 @@ public class HomeController extends Controller implements Initializable {
             File conversationFileName1 = new File(UserSigned.getInstance().getCurrentUser().getMail() + users.getValue());
             File conversationFileName2 = new File(users.getValue() + UserSigned.getInstance().getCurrentUser().getMail());
             if (conversationFileName1.exists()) {
-                SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName1.toString()));
+                SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName1.toString()),conversationFileName1.toString());
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             } else if (conversationFileName2.exists()) {
-                SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName2.toString()));
+                SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName2.toString()),conversationFileName1.toString());
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             } else {
                 Conversation conversationToSave = new Conversation(conversationFileName1.toString());
                 conversationToSave.addUser(UserSigned.getInstance().getCurrentUser());
                 conversationToSave.addUser(browseUserInUsersArray(users.getValue()));
                 Serializator.serializeObject(conversationToSave,conversationFileName1.toString());
-                SelectedConversation.getInstance(conversationToSave);
+                SelectedConversation.getInstance(conversationToSave,conversationFileName1.toString());
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             }
         } else {
