@@ -1,4 +1,4 @@
-package example;
+package example.controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,20 +47,24 @@ public class SignInController extends Controller implements Initializable {
 
     public void saveClick() throws IOException {
         if (nameText != null && mailText != null && passwordText != null && confirmPasswordText != null) {
-            if (passwordText.getText().equals(confirmPasswordText.getText())) {
-                User userToRegister=new User(nameText.getText(), mailText.getText(), confirmPasswordText.getText());
-                if (!proveIfUserExists(userToRegister)){
-                    UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
-                    allUsers.addUser(userToRegister);
-                    XMLManager.writeXML(allUsers,"usuarios.xml");
-                    UserSigned.getInstance(userToRegister);
-                    App.currentController.changeScene(Scenes.HOME, null);
-                }else {
-                    JavaFXUtils.showErrorAlert("ERROR: USUARIO REGISTRADO","Los datos " +
-                            "introducidos corresponden a un usuario registrado");
+            if (JavaFXUtils.validateEmail(mailText.getText())) {
+                if (passwordText.getText().equals(confirmPasswordText.getText())) {
+                    User userToRegister = new User(nameText.getText(), mailText.getText(), confirmPasswordText.getText());
+                    if (!proveIfUserExists(userToRegister)) {
+                        UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
+                        allUsers.addUser(userToRegister);
+                        XMLManager.writeXML(allUsers, "usuarios.xml");
+                        UserSigned.getInstance(userToRegister);
+                        App.currentController.changeScene(Scenes.HOME, null);
+                    } else {
+                        JavaFXUtils.showErrorAlert("ERROR: USUARIO REGISTRADO", "Los datos " +
+                                "introducidos corresponden a un usuario registrado");
+                    }
+                } else {
+                    JavaFXUtils.showErrorAlert("ERROR: CONTRASEÑA DIFERENTE", "La contraseña no concuerda en ambos campos");
                 }
-            } else {
-                JavaFXUtils.showErrorAlert("ERROR: CONTRASEÑA DIFERENTE", "La contraseña no concuerda en ambos campos");
+            }else {
+                JavaFXUtils.showErrorAlert("ERROR: CORREO NO VALIDO","Introduce un correo valido");
             }
         } else {
             JavaFXUtils.showErrorAlert("ERROR: CAMPO NECESARIO", "Alguno de los campos está incompleto");

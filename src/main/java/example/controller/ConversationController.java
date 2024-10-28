@@ -1,6 +1,8 @@
-package example;
+package example.controller;
 
+import example.App;
 import example.controller.Controller;
+import example.model.entity.Conversation;
 import example.model.entity.Message;
 import example.model.entity.MessageCollection;
 import example.model.singleton.SelectedConversation;
@@ -80,6 +82,8 @@ public class ConversationController extends Controller implements Initializable 
             labelMessage.setStyle("-fx-padding: 10; -fx-background-radius: 10; -fx-border-radius: 10;");
             labelMessage.setWrapText(true);
             labelMessage.setMaxWidth(300);
+            labelMessage.autosize();
+            labelMessage.setMinHeight(75);
             HBox hbox = new HBox();
             hbox.setPadding(new Insets(5));
 

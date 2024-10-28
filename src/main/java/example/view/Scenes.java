@@ -8,7 +8,8 @@ public enum Scenes {
     HOME("home.fxml"),
     GROUP_PARTICIPANTS("groupParticipants.fxml"),
     CONVERSATION("conversation.fxml"),
-    CREATEGROUP("createGroup.fxml")
+    CREATEGROUP("createGroup.fxml"),
+    EXPORT("exportConversation.fxml")
     ;
 
     private String path;

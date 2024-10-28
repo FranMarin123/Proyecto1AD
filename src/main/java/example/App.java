@@ -1,5 +1,6 @@
 package example;
 
+import example.controller.AppController;
 import example.view.View;
 import javafx.application.Application;
 import javafx.scene.Scene;

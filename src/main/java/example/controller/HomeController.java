@@ -1,5 +1,6 @@
-package example;
+package example.controller;
 
+import example.App;
 import example.controller.Controller;
 import example.model.entity.Conversation;
 import example.model.entity.User;
@@ -18,6 +19,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class HomeController extends Controller implements Initializable {
@@ -53,7 +56,7 @@ public class HomeController extends Controller implements Initializable {
                 SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName1.toString()),conversationFileName1.toString());
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             } else if (conversationFileName2.exists()) {
-                SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName2.toString()),conversationFileName1.toString());
+                SelectedConversation.getInstance(Serializator.deserializeObject(conversationFileName2.toString()),conversationFileName2.toString());
                 App.currentController.changeScene(Scenes.CONVERSATION, null);
             } else {
                 Conversation conversationToSave = new Conversation(conversationFileName1.toString());
@@ -82,6 +85,10 @@ public class HomeController extends Controller implements Initializable {
 
     public void groupCreateClick() throws IOException {
         App.currentController.changeScene(Scenes.CREATEGROUP, null);
+    }
+
+    public void exportClick() throws IOException {
+        App.currentController.changeScene(Scenes.EXPORT,null);
     }
 
     public void exitClick() {
