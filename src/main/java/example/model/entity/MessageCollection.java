@@ -4,12 +4,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "messageCollection")
-public class MessageCollection {
+public class MessageCollection implements Serializable {
 
     @XmlElement(name = "message", type = Message.class)
     private List<Message> messages;

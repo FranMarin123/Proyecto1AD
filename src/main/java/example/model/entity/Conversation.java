@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -110,8 +111,8 @@ public class Conversation implements Serializable {
     public String toString() {
         return "Conversation{" +
                 "name='" + name + '\'' +
-                ", init=" + init +
-                ", end=" + end +
+                ", init=" + init.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) +
+                ", end=" + end.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) +
                 ", participants=" + participants +
                 ", messages=" + messages +
                 '}';
