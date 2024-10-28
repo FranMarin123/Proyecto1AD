@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.GroupParticipantsController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.HomeController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -19,10 +19,9 @@
                   <Image url="@img/logoWhatsApp2.PNG" />
                </image>
             </ImageView>
-            <ComboBox prefHeight="46.0" prefWidth="181.0" promptText="Participantes" styleClass="combo-box" />
-            <Button styleClass="primary-button" text="Eliminar Participante" textAlignment="CENTER" />
-            <Button styleClass="primary-button" text="Añadir Participante" />
-            <Button styleClass="secondary-button" text="Volver" />
+            <ComboBox prefHeight="46.0" prefWidth="181.0" promptText="Conversación" styleClass="combo-box" />
+            <TextField fx:id="titleExport" maxWidth="200.0" prefWidth="200.0" promptText="Título del archivo exportado" />            <Button onAction="#selectUserToCreateConversation" styleClass="primary-button" text="Exportar Conversación" textAlignment="CENTER" />
+            <Button onAction="#exitClick" styleClass="secondary-button" text="Volver" />
          </children>
       </VBox>
    </children>

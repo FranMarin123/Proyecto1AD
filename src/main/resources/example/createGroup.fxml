@@ -20,8 +20,8 @@
                </image>
             </ImageView>
             <ComboBox prefHeight="46.0" prefWidth="181.0" promptText="Participantes" styleClass="combo-box" />
-            <Button styleClass="primary-button" text="Eliminar Participante" textAlignment="CENTER" />
-            <Button styleClass="primary-button" text="Añadir Participante" />
+            <Button styleClass="primary-button" text="Añadir Participante" textAlignment="CENTER" />
+            <Button styleClass="primary-button" text="Comenzar Conversación" />
             <Button styleClass="secondary-button" text="Volver" />
          </children>
       </VBox>

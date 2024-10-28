@@ -22,7 +22,7 @@
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="377.0">
                     <children>
                         <TextField fx:id="mailText" maxWidth="200.0" prefWidth="200.0" promptText="Mail" />
-                        <TextField fx:id="passwordText" maxWidth="200.0" prefWidth="200.0" text="Contraseña" />
+                        <PasswordField fx:id="passwordText" maxWidth="200.0" prefWidth="200.0" promptText="Mail" />
                     </children>
                 </VBox>
             <CheckBox fx:id="cookie" mnemonicParsing="false" style="-fx-background-color: #2d87f0;" styleClass="checkBox" text="Mantener sesión iniciada" textFill="WHITE" />

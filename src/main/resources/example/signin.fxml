@@ -21,10 +21,10 @@
                 </ImageView>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="377.0">
                     <children>
-                        <TextField fx:id="nameText" maxWidth="200.0" prefWidth="200.0" text="Nombre" />
-                        <TextField fx:id="mailText" maxWidth="200.0" prefWidth="200.0" text="Mail" />
-                        <TextField fx:id="passwordText" maxWidth="200.0" prefWidth="200.0" text="Contraseña" />
-                        <TextField fx:id="confirmPasswordText" maxWidth="200.0" prefWidth="200.0" text="Confirmar contraseña" />
+                        <TextField fx:id="nameText" maxWidth="200.0" prefWidth="200.0" promptText="Nombre" />
+                        <TextField fx:id="mailText" maxWidth="200.0" prefWidth="200.0" promptText="Mail" />
+                        <TextField fx:id="passwordText" maxWidth="200.0" prefWidth="200.0" promptText="Contraseña" />
+                        <TextField fx:id="confirmPasswordText" maxWidth="200.0" prefWidth="200.0" promptText="Confirmar contraseña" />
                     </children>
                 </VBox>
                 <Button onAction="#saveClick" styleClass="save-button" text="Guardar" />
