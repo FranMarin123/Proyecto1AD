@@ -65,19 +65,27 @@ public class LogInController extends Controller implements Initializable {
     @FXML
     public boolean logIn() {
         boolean result = false;
-        User userToLogin = new User("", mailText.getText(), passwordText.getText());
-        UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
-        if (allUsers.getUsers().contains(userToLogin)) {
-            userToLogin = browseUserInArray(allUsers, userToLogin);
-            UserSigned.getInstance(userToLogin);
+        if (mailText!=null && mailText.getText()!=null) {
+            if (passwordText!=null && passwordText.getText()!=null) {
+                User userToLogin = new User("", mailText.getText(), passwordText.getText());
+                UserCollection allUsers = XMLManager.readXML(new UserCollection(), "usuarios.xml");
+                if (allUsers.getUsers().contains(userToLogin)) {
+                    userToLogin = browseUserInArray(allUsers, userToLogin);
+                    UserSigned.getInstance(userToLogin);
 
-            if (cookie.isSelected()) {
-                Serializator.serializeObject(userToLogin, "cookie");
+                    if (cookie.isSelected()) {
+                        Serializator.serializeObject(userToLogin, "cookie");
+                    }
+
+                    result = true;
+                } else {
+                    JavaFXUtils.showErrorAlert("FAILED TO LOGIN", "There is any user with this mail or the mail or password is incorrect.");
+                }
+            }else {
+                JavaFXUtils.showErrorAlert("ERROR: CONTRASEÑA NO INTRODUCIDA","Introduce una contraseña");
             }
-
-            result = true;
-        } else {
-            JavaFXUtils.showErrorAlert("FAILED TO LOGIN", "There is any user with this mail or the mail or password is incorrect.");
+        }else {
+            JavaFXUtils.showErrorAlert("ERROR: MAIL NO INTRODUCIDO","El mail no ha sido introducido");
         }
         return result;
     }
